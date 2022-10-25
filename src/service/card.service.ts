@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 
 @Provide()
 export class CardService {
-  @Config('demo')
+  @Config('coolAppConfig')
   demoConfig;
 
   @Logger()
