@@ -13,7 +13,7 @@ export default {
     dirs: {
       default: {
         prefix: '/',
-        dir: 'website/dist',
+        dir: 'website/static',
       },
     }
   },

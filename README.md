@@ -15,13 +15,13 @@
 
 前后端运行方式如下：
 1. 前端项目在/website目录里进行构建：npm run build, 输出资源文件到website/dist目录；
-2. 服务端侧开启静态服务功能，并指向前端构建目录website/dist 目录。
+2. 服务端侧开启静态服务功能，并指向前端构建目录website/static 目录。
 ```
   staticFile: {
     dirs: {
       default: {
         prefix: '/',
-        dir: 'website/dist',
+        dir: 'website/static',
       },
     }
   },
@@ -49,6 +49,7 @@
 ```bash
 $ npm i
 $ npm run dev
-$ npm run test
 ```
+
+访问: http://127.0.0.1:7001/index.html
 
