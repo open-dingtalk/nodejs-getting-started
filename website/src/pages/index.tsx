@@ -82,7 +82,7 @@ const Home: React.FC = () => {
   return (
     <div className='page-container'>
       <div className='top'>
-        <h2>酷应用配置成功！</h2>
+        <h2>恭喜,酷应用配置成功！</h2>
         <p className='sub-title'>已成功接入账号免登、消息卡片、吊顶卡片功能，点击下方模拟发送体验卡片效果。</p>
       </div>
       <Card title={'已接入钉钉免登录'}>
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
       </Card>
       <Card title={'已实现的消息卡片'} >
         <div>
-
+          <img className='img' src="https://img.alicdn.com/imgextra/i4/O1CN01j80ZsB1TRd1rTIx8s_!!6000000002379-0-tps-770-784.jpg" alt="" />
         </div>
         <Divider>Text</Divider>
         <Button type="primary" onClick={sendMessageCard} block>
@@ -119,7 +119,9 @@ const Home: React.FC = () => {
         </Button>
       </Card>
       <Card title={'已实现的吊顶卡片'} >
-        <div></div>
+        <div>
+          <img className='img' src="https://img.alicdn.com/imgextra/i3/O1CN014zvETC1qZd71adxQX_!!6000000005510-0-tps-676-326.jpg" alt="" />
+        </div>
         <Divider>Text</Divider>
         <Button type="primary" onClick={sendTopCard} block>
           试一试
