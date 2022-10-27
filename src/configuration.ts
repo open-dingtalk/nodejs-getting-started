@@ -31,5 +31,7 @@ export class ContainerLifeCycle {
     this.app.useMiddleware([ReportMiddleware]);
     // add filter
     this.app.useFilter([WeatherErrorFilter]);
+
+    console.log('恭喜!您已成功启动酷应用服务, 可返回开发者后台继续操作。')
   }
 }

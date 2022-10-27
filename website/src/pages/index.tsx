@@ -17,6 +17,7 @@ const Home: React.FC = () => {
   }>()
 
   useEffect(() => {
+    // 获取免登授权码 https://open.dingtalk.com/document/orgapp-client/obtain-the-micro-application-logon-free-authorization-code
     dd.runtime.permission.requestAuthCode({
       corpId: query.get('corpId')||query.get('corpid')||'', // 企业id
     }).then((info)=>{
@@ -82,6 +83,7 @@ const Home: React.FC = () => {
   return (
     <div className='page-container'>
       <div className='top'>
+        <img width={100} height={105} style={{marginBottom: '16px'}} src="https://img.alicdn.com/imgextra/i1/O1CN01afsSQZ1IYXEH4wMGH_!!6000000000905-2-tps-200-210.png" alt="" />
         <h2>恭喜,酷应用配置成功！</h2>
         <p className='sub-title'>已成功接入账号免登、消息卡片、吊顶卡片功能，点击下方模拟发送体验卡片效果。</p>
       </div>

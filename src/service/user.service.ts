@@ -6,9 +6,12 @@ export class UserService {
   @Logger()
   logger: ILogger;
 
-  @Config('demo')
+  @Config('coolAppConfig')
   demoConfig;
 
+   /**
+   * 获取用户信息
+   */
   async getUserInfo(requestAuthCode: string) {
     try{
       const access_token = await this.getToken();
@@ -35,6 +38,9 @@ export class UserService {
     }
   }
 
+   /**
+   * 获取token
+   */
   async getToken() {
     try {
       const result = await makeHttpRequest(
