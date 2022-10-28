@@ -9,4 +9,8 @@ export class HomeController {
   async home(): Promise<void> {
     await this.ctx.render('index',{});
   }
+  @Get('/')
+  async index(): Promise<void> {
+    await this.ctx.redirect('/index.html');
+  }
 }
