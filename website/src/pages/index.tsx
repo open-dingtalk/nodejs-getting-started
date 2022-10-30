@@ -84,11 +84,11 @@ const Home: React.FC = () => {
     <div className='page-container'>
       <div className='top'>
         <img width={100} height={105} style={{marginBottom: '16px'}} src="https://img.alicdn.com/imgextra/i1/O1CN01afsSQZ1IYXEH4wMGH_!!6000000000905-2-tps-200-210.png" alt="" />
-        <h2>恭喜,酷应用配置成功！</h2>
-        <p className='sub-title'>已成功接入账号免登、消息卡片、吊顶卡片功能，点击下方模拟发送体验卡片效果。</p>
+        <h2>恭喜，本地服务启动成功！</h2>
+        <p className='sub-title'>当前服务地址：http://127.0.0.1:7001/index.html</p>
+        <p className='sub-title'>点击下方模拟发送体验卡片效果</p>
       </div>
       <Card title={'已接入钉钉免登录'}>
-        <p className='sub-title'>通过钉钉免登录功能，可以XXXXX</p>
         <div className='user-card'>
             <img src={userInfo?.avatar||'https://img.alicdn.com/imgextra/i2/O1CN01dnoCMI21uCfm2PmmU_!!6000000007044-55-tps-93-93.svg'} className="logo" />
             <div>
