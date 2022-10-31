@@ -27,7 +27,7 @@ export class APIController {
   async sendText(@Body('openConversationId') cid, @Body('txt') txt) {
     const result = await this.cardService.sendGroupMessage({
       msgParam: JSON.stringify({
-        content: 'nodejs-getting-started say : ' + txt || '今天吃肘子',
+        content: 'nodejs-getting-started say : ' + txt || '钉钉,让进步发生',
       }),
       msgKey: 'sampleText',
       openConversationId: cid,
@@ -96,18 +96,6 @@ export class APIController {
   @Get('/getUserInfo')
   async getUserInfo(@Query('requestAuthCode') requestAuthCode) {
     const result = await this.userService.getUserInfo(requestAuthCode);
-    return { success: true, code: 200, message: 'OK', data: result };
-  }
-
-  @Get('/getUserProfiler')
-  async getUserProfile(@Query('uid') uid) {
-    const result = await this.userService.getUserProfile(uid);
-    return { success: true, code: 200, message: 'OK', data: result };
-  }
-  
-  @Get('/getSSOUserInfo')
-  async getSSOUserInfo(@Query('requestAuthCode') requestAuthCode) {
-    const result = await this.userService.getSSOUserInfo(requestAuthCode);
     return { success: true, code: 200, message: 'OK', data: result };
   }
 }

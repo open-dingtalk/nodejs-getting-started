@@ -83,36 +83,32 @@ export class UserService {
     }
   }
 
-  async getOAuthToken() {
+   /**
+   * 获取用户信息新接口
+   * https://open.dingtalk.com/document/orgapp-server/obtain-the-userid-of-a-user-by-using-the-log-free
+   */
+  async getUserInfoNew(requestAuthCode: string) {
     try {
-      const result = await makeHttpRequest(
-        `https://api.dingtalk.com/v1.0/oauth2/accessToken?appkey=${this.demoConfig.appKey}&appsecret=${this.demoConfig.appSecret}`,
+      const access_token = await this.getToken();
+      const result = await makeHttpRequest( 
+        `https://oapi.dingtalk.com/topapi/v2/user/getuserinfo?access_token=${access_token}`,
         {
           dataType: 'json',
           contentType: 'json',
+          data: {
+            code:requestAuthCode
+          },
+          method: 'POST',
+          headers: {
+            'x-acs-dingtalk-access-token': access_token,
+          },
         }
       );
-      if (result.status === 200) {
-        return result.data.access_token;
-      }
+      return result.data.result;
     } catch (error) {
       this.logger.error(error);
       throw new MidwayError(error);
     }
   }
 
-  async getSSOUserInfo(requestAuthCode: string) {
-    const access_token = await this.getOAuthToken();
-    const res = await makeHttpRequest(
-      `https://api.dingtalk.com/v1.0/oauth2/ssoUserInfo?code=${requestAuthCode}`,
-      {
-        dataType: 'json',
-        contentType: 'json',
-        headers: {
-          'x-acs-dingtalk-access-token': access_token,
-        },
-      }
-    );
-    return res.data;
-  }
 }

@@ -1,3 +1,6 @@
+![GitHub issues](https://img.shields.io/github/issues/open-dingtalk/nodejs-getting-started)
+![GitHub](https://img.shields.io/github/license/open-dingtalk/nodejs-getting-started)
+
 # nodejs-getting-started
 钉钉酷应用体验项目Nodejs版本。
 ## 功能介绍
@@ -56,5 +59,5 @@ $ npm run dev
 
 访问: http://127.0.0.1:7001/index.html
 
-在群场景中使用酷应用时，向群里推送户动卡片需要获取到当前组织corpId和群id(openConversationId)，此时可以通过群快捷入口的url配置占位符的方式拿到，如http://127.0.0.1:7001/index.html?openConversationId=$ENCCID$&corpId=$CORPID$ ; 前端通过解析url query及可拿到corpId和openConversationId。
+在群场景中使用酷应用时，向群里推送户动卡片需要获取到当前组织corpId和群id(openConversationId)，此时可以通过群快捷入口的url配置占位符的方式拿到，如http://127.0.0.1:7001/index.html?openConversationId=$DOUBLE_ENCCID$&corpId=$CORPID$ ; 前端通过解析url query及可拿到corpId和openConversationId。
 
