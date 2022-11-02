@@ -1,16 +1,24 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-  outputPath:'static',
+  outputPath: 'static',
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { path: '/', component: '@/pages/index' },
-  ],
+  routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
   history: {
     type: 'hash',
   },
-  title:'酷应用getting started'
+  chainWebpack: (memo, { env, webpack, createCSSRule }) => {
+    memo.output.filename(`main.js`);
+
+    memo.plugin('extract-css').tap(() => [
+      {
+        filename: `style.css`,
+        ignoreOrder: true,
+      },
+    ]);
+  },
+  title: '酷应用getting started',
 });
