@@ -54,7 +54,7 @@
 ### 启动项目&体验
 ```bash
 $ npm i
-& npm run website:build
+$ npm run website:build
 $ npm run dev
 ```
 
