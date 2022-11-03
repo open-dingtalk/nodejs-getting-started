@@ -17,6 +17,8 @@ export class CardService {
 
   /**
    * 发送群消息
+   * @param request 
+   * @returns 
    */
   async sendGroupMessage(request: IGroupMessagesRequest) {
     const access_token = await this.userService.getToken();
@@ -50,6 +52,8 @@ export class CardService {
 
   /**
    * 向群里发送互动卡片
+   * @param cid 
+   * @returns 
    */
   async sendInteractiveCard(cid: string) {
     const access_token = await this.userService.getToken();
@@ -88,6 +92,8 @@ export class CardService {
 
   /**
    * 发送吊顶卡片
+   * @param cid 
+   * @returns 
    */
   async sendTopCard(cid: string) {
     const access_token = await this.userService.getToken();
