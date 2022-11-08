@@ -10,15 +10,22 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
-  chainWebpack: (memo, { env, webpack, createCSSRule }) => {
-    memo.output.filename(`main.js`);
+  // chainWebpack: (memo, { env, webpack, createCSSRule }) => {
+  //   memo.output.filename(`main.js`);
 
-    memo.plugin('extract-css').tap(() => [
-      {
-        filename: `style.css`,
-        ignoreOrder: true,
-      },
-    ]);
-  },
+  //   memo.plugin('extract-css').tap(() => [
+  //     {
+  //       filename: `style.css`,
+  //       ignoreOrder: true,
+  //     },
+  //   ]);
+  // },
   title: '酷应用getting started',
+  proxy: {
+    '/api': {
+      'target': 'http://127.0.0.1:3000',
+      'changeOrigin': true,
+    },
+  },
+
 });

@@ -51,23 +51,39 @@
 }
 ```
 
-### 启动项目&体验
+### 5分钟快速体验，入口在[钉钉开发者后台](https://open-dev.dingtalk.com/#/) - 首页。
+1. 根据官网引导创建酷应用；
+2. 下载项目，进入项目根目录，通过以下命令启动项目：
 ```bash
 $ npm i
 $ npm run website:build
 $ npm run dev
 ```
+3. 回到开发者后台，按引导下一步进入测试群，快捷入口"点击体验"即可打开本地启动的服务页面: http://127.0.0.1:7001/index.html
 
-访问: http://127.0.0.1:7001/index.html
+注意：以上模式采用的是nodejs启动的web服务，加载前端资源渲染的页面，所以更新前端页面后，需要重新编译（npm run website:build）后才会在体验页面中生效。
 
 在群场景中使用酷应用时，向群里推送户动卡片需要获取到当前组织corpId和群id(openConversationId)，此时可以通过群快捷入口的url配置占位符的方式拿到，如http://127.0.0.1:7001/index.html?openConversationId=$DOUBLE_ENCCID$&corpId=$CORPID$#/ ; 前端通过解析url query及可拿到corpId和openConversationId。
 
-### 更新页面
+### 本地开发调试 (前端devserver模式)
+前端项目放置在website目录，前端采用umi框架，本地开发页面时，可基于框架新增更新页面。
 
-前端项目放置在website目录，前端采用umi框架，可基于框架新增更新页面。开发完成后需要重新编译后才会在体验页面中生效。
-
+本地开发时可以采用前端devserver + nodejs服务提供接口的方式来开发调试，既能享用前端热更新，服务端nodejs修改也可实时更新。 加上vscode 的JavaScript Debug Terminal功能，可以实现前后端一起调试：
+1. 先启动nodejs 服务；
 ```bash
 $ npm i
-$ npm run build
+$ npm run debug
 ```
+服务地址：http://127.0.0.1:3000
+
+2. 启动前端本地服务
+```bash
+$ cd website
+$ yarn 或 npm i
+$ yarn start 或 npm start
+```
+前端本地服务地址： http://127.0.0.1:7001
+
+3. 开发者后台创建(群场景)酷应用 - 拷贝酷应用配置信息到src/config/cool.config.json - 配置快捷入口链接 - 体验酷应用，通过群快捷入口打开链接。
+
 
