@@ -16,20 +16,6 @@
 
 > 前端项目在跟目标 /website下，前端采用 [umi v3](https://v3.umijs.org/zh-CN/docs/getting-started)框架. 
 
-前后端运行方式如下：
-1. 前端项目在/website目录里进行构建：npm run build, 输出资源文件到website/dist目录；
-2. 服务端侧开启静态服务功能，并指向前端构建目录website/static 目录。
-```
-  staticFile: {
-    dirs: {
-      default: {
-        prefix: '/',
-        dir: 'website/static',
-      },
-    }
-  },
-```
-3. 服务端渲染模板 view/index.html里引用前端资源。
 
 ### 配置
 案例中调用OpenApi需要appKey、appSecret等的入参信息需要通过钉钉自建应用来获取，获取应用配置信息步骤如下：
@@ -56,34 +42,31 @@
 2. 下载项目，进入项目根目录，通过以下命令启动项目：
 ```bash
 $ npm i
-$ npm run website:build
 $ npm run dev
 ```
 3. 回到开发者后台，按引导下一步进入测试群，快捷入口"点击体验"即可打开本地启动的服务页面: http://127.0.0.1:7001/index.html
 
-注意：以上模式采用的是nodejs启动的web服务，加载前端资源渲染的页面，所以更新前端页面后，需要重新编译（npm run website:build）后才会在体验页面中生效。
+注意：以上命令采用了前端devserver + nodejs服务提供接口的方式来开发调试，既能享用前端热更新，服务端nodejs修改也可实时更新。如果需要调试nodejs代码，可参考[midway调试方法](https://midwayjs.org/docs/debugger)。
 
 在群场景中使用酷应用时，向群里推送户动卡片需要获取到当前组织corpId和群id(openConversationId)，此时可以通过群快捷入口的url配置占位符的方式拿到，如http://127.0.0.1:7001/index.html?openConversationId=$DOUBLE_ENCCID$&corpId=$CORPID$#/ ; 前端通过解析url query及可拿到corpId和openConversationId。
 
-### 本地开发调试 (前端devserver模式)
-前端项目放置在website目录，前端采用umi框架，本地开发页面时，可基于框架新增更新页面。
+### 正式环境运行模式
+正式环境时也可以采用nodejs服务做网关，加载前端资源来渲染页面的方式。更新前端页面后，需要重新编译（npm run website:build）后才会在体验页面中生效。
 
-本地开发时可以采用前端devserver + nodejs服务提供接口的方式来开发调试，既能享用前端热更新，服务端nodejs修改也可实时更新。 加上vscode 的JavaScript Debug Terminal功能，可以实现前后端一起调试：
-1. 先启动nodejs 服务；
-```bash
-$ npm i
-$ npm run debug
+nodejs服务做网关运行方式如下：
+1. 前端项目在/website目录里进行构建：npm run build, 输出资源文件到website/dist目录；
+2. 服务端侧开启静态服务功能，并指向前端构建目录website/static 目录。
 ```
-服务地址：http://127.0.0.1:3000
-
-2. 启动前端本地服务
-```bash
-$ cd website
-$ yarn 或 npm i
-$ yarn start 或 npm start
+  staticFile: {
+    dirs: {
+      default: {
+        prefix: '/',
+        dir: 'website/static',
+      },
+    }
+  },
 ```
-前端本地服务地址： http://127.0.0.1:7001
+3. 服务端渲染模板 view/index.html里引用前端资源。
 
-3. 开发者后台创建(群场景)酷应用 - 拷贝酷应用配置信息到src/config/cool.config.json - 配置快捷入口链接 - 体验酷应用，通过群快捷入口打开链接。
 
 

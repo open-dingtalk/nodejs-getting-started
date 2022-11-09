@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "workspaces": [
+    "website"
+  ],
   "dependencies": {
     "@midwayjs/bootstrap": "^3.0.0",
     "@midwayjs/core": "^3.0.0",
@@ -33,8 +36,9 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node ./bootstrap.js",
-    "dev": "cross-env NODE_ENV=local midway-bin dev --ts",
-    "debug": "cross-env NODE_ENV=local midway-bin dev --ts --port=3000",
+    "dev": "npm run debug:node & npm run debug:web",
+    "debug:web": "cd website && npm start",
+    "debug:node": "cross-env NODE_ENV=local midway-bin dev --ts --port=3000",
     "website:build": "cd website && npm i && npm run build",
     "test": "midway-bin test --ts",
     "cov": "midway-bin cov --ts",
