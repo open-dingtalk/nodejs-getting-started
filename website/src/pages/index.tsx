@@ -23,6 +23,41 @@ const Home: React.FC = () => {
   }>();
 
   useEffect(() => {
+    // 鉴权
+    const ddconfig = axios.get('/api/getConfigData', {
+      params: {
+        agentId: 'xxxxxxx',
+        url: encodeURIComponent(location.href.split('#')[0])
+      }
+    }).then((res) => {
+      console.log('res', res);
+      dd.config({
+        nonceStr: res.data.nonceStr,
+        timeStamp: res.data.timeStamp,
+        signature: res.data.signature,
+        appId: res.data.agentId, // 必填，应用ID
+        type: 0,
+        corpId: query.get('corpid') || 'xxxxxxx', // 必填，企业ID
+        jsApiList: [
+          'runtime.info',
+          'biz.contact.choose',
+          'device.notification.confirm',
+          'device.notification.alert',
+          'device.notification.prompt',
+          'biz.ding.post',
+          'biz.util.openLink',
+        ] // 必填，需要使用的jsapi列表
+      });
+      // TODO: 需要在这里调用ddconfig
+      // ddconfig();
+
+      dd.error(function (err) {
+        alert('dd error: ' + JSON.stringify(err));
+      });
+    })
+  }, []);
+
+  useEffect(() => {
     // 获取当前组织免登免登授权码 https://open.dingtalk.com/document/orgapp-client/obtain-the-micro-application-logon-free-authorization-code
     dd.runtime.permission
       .requestAuthCode({

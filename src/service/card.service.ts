@@ -17,8 +17,8 @@ export class CardService {
 
   /**
    * 发送群消息
-   * @param request 
-   * @returns 
+   * @param request
+   * @returns
    */
   async sendGroupMessage(request: IGroupMessagesRequest) {
     const access_token = await this.userService.getToken();
@@ -52,8 +52,8 @@ export class CardService {
 
   /**
    * 向群里发送互动卡片
-   * @param cid 
-   * @returns 
+   * @param cid
+   * @returns
    */
   async sendInteractiveCard(cid: string) {
     const access_token = await this.userService.getToken();
@@ -92,8 +92,8 @@ export class CardService {
 
   /**
    * 发送吊顶卡片
-   * @param cid 
-   * @returns 
+   * @param cid
+   * @returns
    */
   async sendTopCard(cid: string) {
     const access_token = await this.userService.getToken();
@@ -118,7 +118,7 @@ export class CardService {
     };
 
     try { // https://open.dingtalk.com/document/orgapp-server/create-an-interactive-card-instance-1
-      const result = await makeHttpRequest(
+      const result: any = await makeHttpRequest(
         `https://api.dingtalk.com/v1.0/im/interactiveCards/instances`,
         {
           dataType: 'json',

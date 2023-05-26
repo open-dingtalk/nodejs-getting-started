@@ -55,7 +55,7 @@ export class APIController {
   /**
    * 通过机器人发送吊顶卡片
    * @param cid 群ID
-   * @returns 
+   * @returns
    */
   @Post('/sendTopCard')
   async sendTopCard(@Body('openConversationId') cid) {
@@ -65,26 +65,26 @@ export class APIController {
 
   /**
    * 获取jsapi鉴权ticket
-   * @param access_token 
-   * @returns 
+   * @param access_token
+   * @returns
    */
   @Get('/getJsapiTicket')
   async getJsapiTicket(access_token: string) {
-    const response = await makeHttpRequest(
+    const response: any = await makeHttpRequest(
       `https://oapi.dingtalk.com/get_jsapi_ticket?access_token=${access_token}`,
       {
         dataType: 'json',
       }
     );
-    return response.data.ticket;
+    return response.data?.ticket;
   }
 
   /**
    * 生成签名串
-   * @param ticket 
-   * @param timeStamp 
-   * @param url 
-   * @param nonce 
+   * @param ticket
+   * @param timeStamp
+   * @param url
+   * @param nonce
    * @returns 签名串
    */
   getJsApiSingnature(ticket, timeStamp, url, nonce = 'jsapi') {
@@ -103,9 +103,9 @@ export class APIController {
 
   /**
    * 获取鉴权信息
-   * @param url 
-   * @param agentId 
-   * @returns 
+   * @param url
+   * @param agentId
+   * @returns
    */
   @Get('/getConfigData')
   async getConfigData(@Query('url') url, @Query('agentId') agentId) {
@@ -130,8 +130,8 @@ export class APIController {
 
   /**
    * 通过授权码获取用户信息
-   * @param requestAuthCode 
-   * @returns 
+   * @param requestAuthCode
+   * @returns
    */
   @Get('/getUserInfo')
   async getUserInfo(@Query('requestAuthCode') requestAuthCode) {
