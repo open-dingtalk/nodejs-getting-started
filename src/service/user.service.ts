@@ -15,7 +15,7 @@ export class UserService {
   async getUserInfo(requestAuthCode: string) {
     try{
       const access_token = await this.getToken();
-      const res = await makeHttpRequest( 
+      const res: any = await makeHttpRequest(
         `https://oapi.dingtalk.com/user/getuserinfo?access_token=${access_token}&code=${requestAuthCode}`,
         {
           dataType: 'json',
@@ -43,7 +43,7 @@ export class UserService {
    */
   async getToken() {
     try {
-      const result = await makeHttpRequest(
+      const result: any = await makeHttpRequest(
         `https://oapi.dingtalk.com/gettoken?appkey=${this.demoConfig.appKey}&appsecret=${this.demoConfig.appSecret}`,
         {
           dataType: 'json',
@@ -61,7 +61,7 @@ export class UserService {
   async getUserProfile(uid: string) {
     try {
       const access_token = await this.getToken();
-      const result = await makeHttpRequest( // https://open.dingtalk.com/document/orgapp-server/query-user-details
+      const result: any = await makeHttpRequest( // https://open.dingtalk.com/document/orgapp-server/query-user-details
         `https://oapi.dingtalk.com/topapi/v2/user/get?access_token=${access_token}`,
         {
           dataType: 'json',
@@ -90,7 +90,7 @@ export class UserService {
   async getUserInfoNew(requestAuthCode: string) {
     try {
       const access_token = await this.getToken();
-      const result = await makeHttpRequest( 
+      const result: any = await makeHttpRequest(
         `https://oapi.dingtalk.com/topapi/v2/user/getuserinfo?access_token=${access_token}`,
         {
           dataType: 'json',
